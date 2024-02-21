@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class CipherMethods {
     private String plainText;
     private String cipherText = "";
@@ -10,13 +12,12 @@ public class CipherMethods {
     }
 
     //Method Declarations
-    public void Encrypt(String text, int key){
+    public String Encrypt(String text, int key){
         plainText = text;
         cipherKey = key;
         int charPos;
         char plainChar;
         char cipherChar;
-        //System.out.println("working so far");
         for (int i=0; i < plainText.length(); i++) {
             plainChar = plainText.charAt(i);
             if (plainChar == ' ') {
@@ -27,17 +28,25 @@ public class CipherMethods {
                     cipherChar = alphaPos[j];
                     if (plainChar == cipherChar) {
                         charPos = j;
-                        charPos = (charPos + key) % 26;
+                        if (cipherKey < 0){
+                            double negPos = charPos + cipherKey;  // 2 - 5 = -3
+                            int floorVal = (int)Math.floor(negPos / 26); // -3/26 = -0.1153846
+                            charPos = (int)negPos - (26 * floorVal); // -3 - (-26) = 23
+                        }
+                        else{
+                            charPos = (charPos + key) % 26;
+                        }
                         cipherChar = alphaPos[charPos];
                         cipherText += Character.toString(cipherChar);
                     }
                 }
             }
         }
-        System.out.println("The new ciphertext is: " + cipherText);
+        return cipherText;
     }
-    public void Decrypt(){
-
+    public String Decrypt(String text, int key){
+        cipherKey = -1 * key;
+        return Encrypt(text, cipherKey);
     }
     public void compareToDict(){
 
