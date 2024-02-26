@@ -1,10 +1,11 @@
 import java.lang.Math;
+import java.util.ArrayList;
 
 public class CipherMethods {
 
     // Class Variable Declarations:
     private String plainText;
-    private String cipherText = "";
+    //private String cipherText = "";
     private int cipherKey;
     // array of chars - english alphabet - used for caesar cipher position comparisons
     private char[] alphaPos = new char[]{'a','b','c','d','e','f','g','h','i','j','k',
@@ -39,6 +40,7 @@ public class CipherMethods {
         int charPos;
         char plainChar;
         char cipherChar;
+        String cipherText = "";
         for (int i=0; i < plainText.length(); i++) {
             plainChar = plainText.charAt(i);
             if (plainChar == ' ') {
@@ -83,7 +85,39 @@ public class CipherMethods {
         cipherKey = -1 * key;
         return Encrypt(text, cipherKey);
     }
-    public void compareToDict(){
-
+    public void compareToDict(ArrayList<String> commonWords, ArrayList<String> encryptedText){
+        String cipherTemp;
+        String commonTemp;
+        String plainTemp;
+        String matchString = "";
+        double matchCount;
+        double matchRate;
+        for (int k = 0; k < 26; k++){
+            matchCount = 0;
+            for (int i = 0; i < encryptedText.size(); i++){
+                cipherTemp = encryptedText.get(i);
+                plainTemp = Decrypt(cipherTemp, k);
+                for (int j = 0; j < commonWords.size(); j++){
+                    commonTemp = commonWords.get(j);
+                    if (commonTemp.equals(plainTemp)){
+                        matchCount += 1;
+                        /*System.out.println("Found match! key of " + k + ", " +
+                                "and cipher " + cipherTemp + ", and match " + commonTemp +
+                                " (plaintext " + plainTemp + ")");
+                         */
+                    }
+                }
+            }
+            matchRate = matchCount / encryptedText.size();
+            if (matchRate > 0.5) {
+                for (int i = 0; i < encryptedText.size(); i++){
+                    plainTemp = Decrypt(encryptedText.get(i), k);
+                    matchString += plainTemp + " ";
+                }
+                matchRate = matchRate * 100;
+                System.out.println("Match Rate: %" + matchRate + " for key " + k + "\n");
+                System.out.println("Decrypted Text: " + matchString + "\n");
+            }
+        }
     }
 }
