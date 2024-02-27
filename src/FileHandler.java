@@ -1,4 +1,3 @@
-import package caesercipher;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
@@ -9,7 +8,7 @@ import java.io.FileWriter;
 import java.io.Writer;
 import java.io.IOException;
 
-package caesercipher
+
 public class FileHandler {
     int shiftNumber;
     private int[] keySpace = new int[26];
