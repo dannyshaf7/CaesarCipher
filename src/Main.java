@@ -1111,6 +1111,10 @@ public class Main {
                 }
             } else if (menuInput == 3) {
                 CipherMethods newCipher = new CipherMethods();
+                FileHandler dictionary = new FileHandler(0);
+                dictionary.loadFile(commonWords);
+                FileHandler cipherText = new FileHandler(0);
+                cipherText.loadFile(encryptedText);
                 newCipher.compareToDict(commonWords, encryptedText);
 
             } else if (menuInput == 4) {
