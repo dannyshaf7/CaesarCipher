@@ -1070,13 +1070,16 @@ public class Main {
 
                 if (0 <= key && key <= 25) {
                     CipherMethods newCipher = new CipherMethods(key);
+                    String encodedString=" ";
                     for (int i=0; i<plainText.size(); i++ ){ //iterate through plain text words
                         String word=plainText.get(i);
                         for (int k=0;k<word.length(); k++ ){ // iterate through each letter for the word
                             String plainString=String.valueOf((word.charAt(k))); //converts char to string
                             String cipherText = newCipher.Encrypt(plainString, key);
                             System.out.println("Encrypted ciphertext: " + cipherText);
+                            encodedString+=cipherText;
                         }
+                        encodedString+=" ";
                     }
 
                 } else {
@@ -1097,13 +1100,16 @@ public class Main {
 
                 if (0 <= key && key <= 25) {
                     CipherMethods newCipher = new CipherMethods(key);
+                    String decodedString="";
                     for (int i=0; i<encryptedText.size(); i++ ){ //iterate through encrypted text words
                         String word=encryptedText.get(i);
                         for (int k=0;k<word.length(); k++ ){ // iterate through each letter for the word
                             String cipherText=String.valueOf((word.charAt(k))); //converts char to string
                             String decoded = newCipher.Decrypt(cipherText, key);
                             System.out.println("Decrypted plaintext: " + decoded);
+                            decodedString+=decoded;
                         }
+                        decodedString+=" ";
                     }
 
                 } else {
