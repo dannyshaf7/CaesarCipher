@@ -1,3 +1,15 @@
+import package caesercipher;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.Writer;
+import java.io.IOException;
+
+package caesercipher
 public class FileHandler {
     int shiftNumber;
     private int[] keySpace = new int[26];
@@ -8,19 +20,22 @@ public class FileHandler {
     }
 
     //Method Declarations
-    public void loadPlain(){
+    public void loadFile (ArrayList<String> list) throws IOException{
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Please input the absolute path for the file");
+        String filename = userInput.nextLine();
+        File file = new File(filename); //Should be absolute path
 
-    }
-    public void loadCipher(){
+        Scanner fileInput = null;
+        fileInput = new Scanner(file);
 
+        while (fileInput.hasNext()) {
+            String word = fileInput.next();
+            list.add(word);
+            fileInput.nextLine();
+        }
     }
-    public void loadDict(){
-
-    }
-    public void parseCipher(){
-
-    }
-    public void saveCipher(){
+    public void writeText(){
 
     }
 }

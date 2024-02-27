@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+
 public class Main {
     public static void main(String[] args) {
         // https://www.ef.com/wwen/english-resources/english-vocabulary/top-1000-words/
-        ArrayList<String> commonWords = new ArrayList<>(); //
+        ArrayList<String> commonWords = new ArrayList<>();
         commonWords.add("a");
         commonWords.add("ability");
         commonWords.add("able");
@@ -1068,9 +1070,10 @@ public class Main {
                 }
 
             } else if (menuInput == 2) {
-                inputObject = new Scanner(System.in);
-                System.out.println("Enter ciphertext to be decrypted:");
-                String cipherText = inputObject.nextLine();
+//                inputObject = new Scanner(System.in);
+//                System.out.println("Enter ciphertext to be decrypted:");
+//                String cipherText = inputObject.nextLine();
+
                 inputObject = new Scanner(System.in);
                 System.out.println("Enter encryption key (positive integer 0 to 25):");
                 int key = inputObject.nextInt();
