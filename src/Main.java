@@ -1046,6 +1046,7 @@ public class Main {
 //        encryptedText.add("n");
 //        encryptedText.add("qtaj");
 //        encryptedText.add("mnr");
+        ArrayList<String> plainText = new ArrayList<>();
 
         boolean endFlag = false;
         while (!endFlag) {
@@ -1056,16 +1057,28 @@ public class Main {
             int menuInput = inputObject.nextInt();
 
             if (menuInput == 1) {
-                inputObject = new Scanner(System.in);
-                System.out.println("Enter plaintext to be encrypted:");
-                String plainText = inputObject.nextLine();
-                inputObject = new Scanner(System.in);
+//                inputObject = new Scanner(System.in);
+//                System.out.println("Enter plaintext to be encrypted:");
+//                String plainText = inputObject.nextLine();
+
                 System.out.println("Enter encryption key (positive integer 0 to 25):");
                 int key = inputObject.nextInt();
+                FileHandler plain = new FileHandler(key);
+
+                plain.loadFile(plainText);
+                //inputObject = new Scanner(System.in);
+
                 if (0 <= key && key <= 25) {
                     CipherMethods newCipher = new CipherMethods(key);
-                    String cipherText = newCipher.Encrypt(plainText, key);
-                    System.out.println("Encrypted ciphertext: " + cipherText);
+                    for (int i=0; i<plainText.size(); i++ ){ //iterate through plain text words
+                        String word=plainText.get(i);
+                        for (int k=0;k<word.length(); k++ ){ // iterate through each letter for the word
+                            String plainString=String.valueOf((word.charAt(k))); //converts char to string
+                            String cipherText = newCipher.Encrypt(plainString, key);
+                            System.out.println("Encrypted ciphertext: " + cipherText);
+                        }
+                    }
+
                 } else {
                     System.out.println("error, key out of bounds \n");
                 }
@@ -1088,10 +1101,9 @@ public class Main {
                         String word=encryptedText.get(i);
                         for (int k=0;k<word.length(); k++ ){ // iterate through each letter for the word
                             String cipherText=String.valueOf((word.charAt(k))); //converts char to string
-                            String plainText = newCipher.Decrypt(cipherText, key);
-                            System.out.println("Decrypted plaintext: " + plainText);
+                            String decoded = newCipher.Decrypt(cipherText, key);
+                            System.out.println("Decrypted plaintext: " + decoded);
                         }
-
                     }
 
                 } else {
