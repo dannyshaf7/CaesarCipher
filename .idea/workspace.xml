@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f3e4967-6baf-440c-b015-19a379d3c2e8" name="Changes" comment="Added documentation to CipherMethods.java class for readability">
+    <list default="true" id="6f3e4967-6baf-440c-b015-19a379d3c2e8" name="Changes" comment="Created arraylists for common words and an encrypted message for testing, interim while i wait on Kiara to add code for file handling; finished compareToDict() method, which will check encrypted text against list of 1000 most common words and if more than 50% match will give the decryption based on that key">
+      <change afterPath="$PROJECT_DIR$/Encrypted.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dictionary.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CipherMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CipherMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,18 +44,22 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2buoVjTzNjBhFQhUM10SxiF08py" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/danielshafer/Documents/College/Spring_2024/Applied_Cryptography/Group_Project/CaesarCipher",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -132,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708553220913</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Created arraylists for common words and an encrypted message for testing, interim while i wait on Kiara to add code for file handling; finished compareToDict() method, which will check encrypted text against list of 1000 most common words and if more than 50% match will give the decryption based on that key">
+      <created>1708921620513</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708921620513</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,11 +191,13 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="my first commit" />
     <MESSAGE value="adding CipherMethods class" />
     <MESSAGE value="updating FileHandler and CipherMethods classes" />
     <MESSAGE value="Updated Main class with menu and added working encryption and decryption to CipherMethods class" />
     <MESSAGE value="Added documentation to CipherMethods.java class for readability" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added documentation to CipherMethods.java class for readability" />
+    <MESSAGE value="Created arraylists for common words and an encrypted message for testing, interim while i wait on Kiara to add code for file handling; finished compareToDict() method, which will check encrypted text against list of 1000 most common words and if more than 50% match will give the decryption based on that key" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created arraylists for common words and an encrypted message for testing, interim while i wait on Kiara to add code for file handling; finished compareToDict() method, which will check encrypted text against list of 1000 most common words and if more than 50% match will give the decryption based on that key" />
   </component>
 </project>
