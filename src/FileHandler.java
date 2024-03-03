@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileReader;
@@ -19,19 +20,34 @@ public class FileHandler {
     }
 
     //Method Declarations
-    public void loadFile (ArrayList<String> list) throws IOException{
+    public void loadFile (ArrayList<String> list){
         Scanner userInput = new Scanner(System.in);
         System.out.println("Please input the absolute path for the file");
-        String filename = userInput.nextLine();
-        File file = new File(filename); //Should be absolute path
+        try {
+            String filename = userInput.nextLine();
+            System.out.println(filename);
+            File file = new File(filename); //Should be absolute path
 
-        Scanner fileInput = null;
-        fileInput = new Scanner(file);
+            Scanner fileInput = null;
+            fileInput = new Scanner(file);
 
-        while (fileInput.hasNext()) {
-            String word = fileInput.next();
-            list.add(word);
-            fileInput.nextLine();
+            while (fileInput.hasNext()) {
+                String word = fileInput.next();
+                list.add(word);
+                if (fileInput.hasNextLine()){
+                    fileInput.nextLine();
+                }
+
+
+            }
+        }
+        catch(IOException e){
+
+            e.printStackTrace();
+        }
+        catch(NoSuchElementException e){
+            System.out.println("No line found when using Scanner");
+            e.printStackTrace();
         }
     }
     public void writeText(String string) throws IOException {

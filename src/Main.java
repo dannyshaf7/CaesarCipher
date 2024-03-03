@@ -1081,6 +1081,7 @@ public class Main {
                         }
                         encodedString+=" ";
                     }
+                    System.out.println(encodedString);
 
                 } else {
                     System.out.println("error, key out of bounds \n");
@@ -1111,6 +1112,7 @@ public class Main {
                         }
                         decodedString+=" ";
                     }
+                    System.out.println(decodedString);
 
                 } else {
                     System.out.println("error, key outside bounds \n");
