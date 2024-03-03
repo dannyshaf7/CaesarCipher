@@ -35,7 +35,7 @@ public class Main {
                         cipherText += newCipher.Encrypt(tempWord, key) + " ";
                     }
                     //System.out.println(cipherText);
-                    newHandler.writeText(cipherText, "encrypted");
+                    newHandler.writeText(cipherText, "encrypted", key);
                 } else {
                     System.out.println("error, key out of bounds \n");
                 }
@@ -56,7 +56,7 @@ public class Main {
                         decryptedText += newCipher.Decrypt(tempWord, key) + " ";
                     }
                     //System.out.println(decryptedText);
-                    newHandler.writeText(decryptedText, "decrypted");
+                    newHandler.writeText(decryptedText, "decrypted", key);
                 } else {
                     System.out.println("error, key out of bounds \n");
                 }

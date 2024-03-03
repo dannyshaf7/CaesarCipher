@@ -32,13 +32,14 @@ public class FileHandler {
         }
         return plainText;
     }
-    public void writeText(String string, String function) throws IOException {
+    public void writeText(String string, String function, int key) throws IOException {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Please input the name of the file to output the "+function+" file to: ");
         String filename = userInput.nextLine();
         File file = new File(filename); //Should be absolute path
         if (file.createNewFile()){
             FileWriter writer = new FileWriter(filename);
+            writer.write("The key is "+ key+"\n");
             for (int i=0; i<string.length(); i++){
                 writer.write(string.charAt(i));
             }
