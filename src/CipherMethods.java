@@ -1,5 +1,6 @@
 import java.lang.Math;
 import java.util.ArrayList;
+import java.lang.Character;
 
 public class CipherMethods {
 
@@ -43,8 +44,11 @@ public class CipherMethods {
         String cipherText = "";
         for (int i=0; i < plainText.length(); i++) {
             plainChar = plainText.charAt(i);
-            if (plainChar == ' ') {
+            if (Character.isSpaceChar(plainChar)) {
                 cipherText += " ";
+            }
+            else if (!Character.isDigit(plainChar) && !Character.isLetter(plainChar)) {
+                cipherText += plainChar;
             }
             else {
                 for (int j = 0; j < alphaPos.length; j++) {
