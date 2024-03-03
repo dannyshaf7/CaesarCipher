@@ -50,23 +50,7 @@ public class FileHandler {
             e.printStackTrace();
         }
     }
-    public void writeText(String string) throws IOException {
-        Scanner userInput = new Scanner(System.in);
-        System.out.println("Please input the name of the file");
-        String filename = userInput.nextLine();
-        File file = new File(filename); //Should be absolute path
-        if (file.createNewFile()){
-            FileWriter writer = new FileWriter(filename);
-            for (int i=0; i<string.length(); i++){
-                writer.write(string.charAt(i));
-            }
-        }
-        else{
-            System.out.println("The file already exists");
-        }
-
-
-
+    public void writeText(){
 
     }
 }
