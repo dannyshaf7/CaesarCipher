@@ -1064,7 +1064,7 @@ public class Main {
                 System.out.println("Enter encryption key (positive integer 0 to 25):");
                 int key = inputObject.nextInt();
                 FileHandler plain = new FileHandler(key);
-
+                String encodedString="";
                 plain.loadFile(plainText);
                 //inputObject = new Scanner(System.in);
 
@@ -1075,11 +1075,13 @@ public class Main {
                         for (int k=0;k<word.length(); k++ ){ // iterate through each letter for the word
                             String plainString=String.valueOf((word.charAt(k))); //converts char to string
                             String cipherText = newCipher.Encrypt(plainString, key);
-                            System.out.println("Encrypted ciphertext: " + cipherText);
+                            System.out.println("Decrypted plaintext: " + cipherText);
+                            encodedString+=cipherText;
                         }
+                        encodedString+=" ";
                     }
                     System.out.println(encodedString);
-
+                    plain.writeText(encodedString);
                 } else {
                     System.out.println("error, key out of bounds \n");
                 }
@@ -1092,7 +1094,7 @@ public class Main {
                 System.out.println("Enter encryption key (positive integer 0 to 25):");
                 int key = inputObject.nextInt();
                 FileHandler cipher = new FileHandler(key);
-
+                String decodedString="";
                 cipher.loadFile(encryptedText);
                 //inputObject = new Scanner(System.in);
 
@@ -1104,9 +1106,12 @@ public class Main {
                             String cipherText=String.valueOf((word.charAt(k))); //converts char to string
                             String decoded = newCipher.Decrypt(cipherText, key);
                             System.out.println("Decrypted plaintext: " + decoded);
+                            decodedString+=decoded;
                         }
+                        decodedString+=" ";
                     }
                     System.out.println(decodedString);
+                    cipher.writeText(decodedString);
 
                 } else {
                     System.out.println("error, key outside bounds \n");
