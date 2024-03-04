@@ -23,7 +23,7 @@ public class FileHandler {
     public ArrayList<String> loadFile (String filePath) throws IOException {
         Path path = Paths.get(filePath);
         Scanner fileInput = new Scanner(path);
-        fileInput.useDelimiter(" ");
+        fileInput.useDelimiter(" |\\n"); // delimited by space or new line
 
         ArrayList<String> plainText = new ArrayList<>();
         while (fileInput.hasNext()){
@@ -32,12 +32,19 @@ public class FileHandler {
         }
         return plainText;
     }
-    public void writeText(String string) throws IOException {
-        Scanner userInput = new Scanner(System.in);
-        System.out.println("Please input the name of the file");
-        String filename = userInput.nextLine();
-        File file = new File(filename); //Should be absolute path
-        if (file.createNewFile()){
+    public void writeFile(String filePath, String toWrite) throws IOException {
+        try {
+            FileWriter newWrite = new FileWriter(filePath);
+            for (int i = 0; i < toWrite.length(); i++) {
+                newWrite.write(toWrite.charAt(i));
+            }
+            System.out.println("Successfully written");
+            newWrite.close();
+        }
+        catch (Exception e) {
+            e.getStackTrace();
+        }
+        /* if (file.createNewFile()){
             FileWriter writer = new FileWriter(filename);
             for (int i=0; i<string.length(); i++){
                 writer.write(string.charAt(i));
@@ -45,6 +52,6 @@ public class FileHandler {
         }
         else{
             System.out.println("The file already exists");
-        }
+        }*/
     }
 }

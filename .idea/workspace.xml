@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f3e4967-6baf-440c-b015-19a379d3c2e8" name="Changes" comment="Created arraylists for common words and an encrypted message for testing, interim while i wait on Kiara to add code for file handling; finished compareToDict() method, which will check encrypted text against list of 1000 most common words and if more than 50% match will give the decryption based on that key">
-      <change afterPath="$PROJECT_DIR$/Encrypted.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary.txt" afterDir="false" />
+    <list default="true" id="6f3e4967-6baf-440c-b015-19a379d3c2e8" name="Changes" comment="Added Kiara's code for FileHandler, did not run when copying over, worked out bugs and now running load to encrypt and load to decrypt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CipherMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CipherMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileHandler.java" afterDir="false" />
@@ -56,7 +54,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/danielshafer/Documents/College/Spring_2024/Applied_Cryptography/Group_Project/CaesarCipher",
+    "last_opened_file_path": "/Users/danielshafer/Documents/College/Spring 2024/Applied Cryptography/Group Project/CaesarCipher",
     "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
@@ -146,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708921620513</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added Kiara's code for FileHandler, did not run when copying over, worked out bugs and now running load to encrypt and load to decrypt">
+      <created>1709442094199</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1709442094199</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -198,6 +203,7 @@
     <MESSAGE value="Updated Main class with menu and added working encryption and decryption to CipherMethods class" />
     <MESSAGE value="Added documentation to CipherMethods.java class for readability" />
     <MESSAGE value="Created arraylists for common words and an encrypted message for testing, interim while i wait on Kiara to add code for file handling; finished compareToDict() method, which will check encrypted text against list of 1000 most common words and if more than 50% match will give the decryption based on that key" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created arraylists for common words and an encrypted message for testing, interim while i wait on Kiara to add code for file handling; finished compareToDict() method, which will check encrypted text against list of 1000 most common words and if more than 50% match will give the decryption based on that key" />
+    <MESSAGE value="Added Kiara's code for FileHandler, did not run when copying over, worked out bugs and now running load to encrypt and load to decrypt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Kiara's code for FileHandler, did not run when copying over, worked out bugs and now running load to encrypt and load to decrypt" />
   </component>
 </project>
