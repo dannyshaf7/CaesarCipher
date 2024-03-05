@@ -115,7 +115,7 @@ public class CipherMethods {
                 }
                 matchRate = matchRate * 100;
                 System.out.println("Match Rate: %" + matchRate + " for key " + k + "\n");
-                System.out.println("Decrypted Text: " + matchString + "\n");
+                System.out.println("Decrypted Text: " + matchString + "\n ");
             }
         }
     }

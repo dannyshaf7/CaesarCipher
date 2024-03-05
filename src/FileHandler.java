@@ -51,7 +51,7 @@ public class FileHandler {
             }
         }
         else{
-            System.out.println("The file already exists");
+            System.out.println("The file  already exists");
         }*/
     }
 }

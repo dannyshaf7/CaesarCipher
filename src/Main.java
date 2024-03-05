@@ -39,15 +39,15 @@ public class Main {
                     cmdArgsFlag = true;
                 } else {
                     System.out.println("Input Error: Command Line Arguments. " +
-                            "Please try again.");
+                            "Please try again.\n");
                 }
             } else {
                 System.out.println("Input Error: Command Line Arguments. " +
-                        "Please try again.");
+                        "Please try again.\n");
             }
         } else {
             System.out.println("Input Error: Command Line Arguments. " +
-                    "Please try again.");
+                    "Please try again.\n");
         }
 
 
