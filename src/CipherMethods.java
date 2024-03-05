@@ -1,11 +1,11 @@
 import java.lang.Math;
-// import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.lang.Character;
 
 public class CipherMethods {
 
-    //private String cipherText = "";
+    // Class Variable Declarations
+    private String plainText;
     private int cipherKey;
     // array of chars - english alphabet - used for caesar cipher position comparisons
     private char[] alphaPos = new char[]{'a','b','c','d','e','f','g','h','i','j','k',
@@ -36,13 +36,14 @@ public class CipherMethods {
     */
     public String Encrypt(String text, int key){
         // Class Variable Declarations:
+        plainText = text;
         cipherKey = key;
         int charPos;
         char plainChar;
         char cipherChar;
         StringBuilder cipherText = new StringBuilder();
-        for (int i = 0; i < text.length(); i++) {
-            plainChar = text.charAt(i);
+        for (int i = 0; i < plainText.length(); i++) {
+            plainChar = plainText.charAt(i);
             if (Character.isSpaceChar(plainChar)) {
                 cipherText.append(" ");
             }

@@ -14,10 +14,9 @@ import java.nio.file.Paths;
 
 public class FileHandler {
 
-    //Constructors
-    public FileHandler(){
+    //Constructor
+    public FileHandler(){}
 
-    }
 
     //Method Declarations
     public ArrayList<String> loadFile (String filePath) throws IOException {
