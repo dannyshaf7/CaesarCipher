@@ -19,23 +19,34 @@ public class Main {
             int menuInput = inputObject.nextInt();
 
             if (menuInput == 1) {
-                String tempWord = " ";
+                String tempWord = "";
                 System.out.println("Enter encryption key (positive integer 0 to 25):");
                 int key = inputObject.nextInt();
-                if (0 <= key && key <= 25) {
+                if (0 <= key && key <= 25) { //Input validation to make sure key is between 0 and 25
                     inputObject = new Scanner(System.in);
-                    System.out.println("Enter absolute path of text file to be encrypted: ");
+                    System.out.println("Enter absolute path of text file to be encrypted: (If you're using Windows, use double \\)");
                     String filePath = inputObject.nextLine();
-                    FileHandler newHandler = new FileHandler();
-                    plainText = newHandler.loadFile(filePath);
-                    CipherMethods newCipher = new CipherMethods(key);
-                    String cipherText = "";
-                    for (int i = 0; i < plainText.size(); i++) {
-                        tempWord = plainText.get(i);
-                        cipherText += newCipher.Encrypt(tempWord, key) + " ";
+                    FileHandler newHandler = new FileHandler(); //Creates FileHandler object to writeText and to loadFile
+                    if (newHandler.loadFile(filePath) != null){
+                        plainText = newHandler.loadFile(filePath);
+                        CipherMethods newCipher = new CipherMethods(key); //Creates CipherMethods to be able to encrypt, decrypt, and break
+
+                        inputObject = new Scanner(System.in);
+                        System.out.println("Enter the name of the file: ");
+                        filePath = inputObject.nextLine();
+
+                        String cipherText = "";
+                        for (int i = 0; i < plainText.size(); i++) { //Iterates through the plaintext to encrypt each char
+                            tempWord = plainText.get(i);
+                            cipherText += newCipher.Encrypt(tempWord, key) + " ";
+                        }
+                        newHandler.writeFile(filePath, cipherText);
+                        System.out.println(cipherText);
                     }
-                    //System.out.println(cipherText);
-                    newHandler.writeText(cipherText, "encrypted", key);
+                    else {
+                        System.out.println("There was an error in retrieving the file to encrypt");
+                    }
+
                 } else {
                     System.out.println("error, key out of bounds \n");
                 }
@@ -45,28 +56,61 @@ public class Main {
                 int key = inputObject.nextInt();
                 if (0 <= key && key <= 25) {
                     inputObject = new Scanner(System.in);
-                    System.out.println("Enter absolute path of text file to be decrypted: ");
+                    System.out.println("Enter absolute path of the file to be decrypted: (If you're using Windows, use double \\)");
                     String filePath = inputObject.nextLine();
-                    FileHandler newHandler = new FileHandler();
-                    encryptedText = newHandler.loadFile(filePath);
-                    CipherMethods newCipher = new CipherMethods(key);
-                    String decryptedText = "";
-                    for (int i = 0; i < encryptedText.size(); i++) {
-                        tempWord = encryptedText.get(i);
-                        decryptedText += newCipher.Decrypt(tempWord, key) + " ";
+                    FileHandler newHandler = new FileHandler(); //Creates FileHandler object to writeText and to loadFile
+                    if (newHandler.loadFile(filePath) != null) {
+                        encryptedText = newHandler.loadFile(filePath);
+                        CipherMethods newCipher = new CipherMethods(key); //Creates CipherMethods to be able to encrypt, decrypt, and break
+
+                        inputObject = new Scanner(System.in);
+                        System.out.println("Enter the name of the file: ");
+                        filePath = inputObject.nextLine();
+
+                        String decryptedText = "";
+                        for (int i = 0; i < encryptedText.size(); i++) { //Iterates through the plaintext to encrypt each char
+                            tempWord = encryptedText.get(i);
+                            decryptedText += newCipher.Decrypt(tempWord, key) + " ";
+                        }
+                        newHandler.writeFile(filePath, decryptedText);
+                        System.out.println(decryptedText);
                     }
-                    //System.out.println(decryptedText);
-                    newHandler.writeText(decryptedText, "decrypted", key);
+                    else{
+                        System.out.println("There was an error in reading the file from the absolute path. ");
+                    }
                 } else {
                     System.out.println("error, key out of bounds \n");
                 }
             } else if (menuInput == 3) {
-                CipherMethods newCipher = new CipherMethods();
-                FileHandler dictionary = new FileHandler();
-                //dictionary.loadFile(commonWords);
-                FileHandler cipherText = new FileHandler();
-                //cipherText.loadFile(encryptedText);
-                newCipher.compareToDict(commonWords, encryptedText);
+                inputObject = new Scanner(System.in);
+                System.out.println("Enter absolute path of the file to be decrypted: (If you're using Windows, use double \\)");
+                String filePath = inputObject.nextLine();
+                FileHandler newHandler = new FileHandler();
+                if (newHandler.loadFile(filePath) != null) {
+                    encryptedText = newHandler.loadFile(filePath);
+                    newHandler = new FileHandler();
+                    //String dictPath = "/Users/danielshafer/Desktop/dictionary.txt";
+                    String dictPath = "C:\\Users\\Kiara\\IdeaProjects\\caeser-cipher\\src\\Dictionary";
+                    //Want to ask the user where their dictionary file is:
+                    //System.out.println("Enter absolute path of the file to be decrypted: (If you're using Windows, use double \\)");
+                    //String filePath = inputObject.nextLine();
+                    // if (newHandler.loadFile(filePath) != null) {
+                    commonWords = newHandler.loadFile(dictPath);
+                    CipherMethods newCipher = new CipherMethods();
+                    inputObject = new Scanner(System.in);
+                    System.out.println("Enter threshold for decryption matches (for 70% enter 0.70)");
+                    double threshold = inputObject.nextDouble();
+                    if (0 <= threshold && threshold <= 1) {
+                        newCipher.compareToDict(threshold, commonWords, encryptedText);
+                    } else {
+                        System.out.println("error, threshold out of bounds \n");
+                    }
+                }
+                // }
+                //else{ System.out.println("There was an error in retrieving rhe dictionary file with the absolute path given);}
+                else{
+                    System.out.println("There was an error in loading your file using the absolute path");
+                }
             } else if (menuInput == 4) {
                 endFlag = true;
             } else {

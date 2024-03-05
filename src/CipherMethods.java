@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.lang.Character;
 
@@ -89,9 +90,9 @@ public class CipherMethods {
         cipherKey = -1 * key;
         return Encrypt(text, cipherKey);
     }
-    public void compareToDict(ArrayList<String> commonWords, ArrayList<String> encryptedText){
+    public void compareToDict(double threshold, ArrayList<String> dictionary, ArrayList<String> encryptedText){
         String cipherTemp;
-        String commonTemp;
+        String dictTemp;
         String plainTemp;
         String matchString = "";
         double matchCount;
@@ -101,19 +102,15 @@ public class CipherMethods {
             for (int i = 0; i < encryptedText.size(); i++){
                 cipherTemp = encryptedText.get(i);
                 plainTemp = Decrypt(cipherTemp, k);
-                for (int j = 0; j < commonWords.size(); j++){
-                    commonTemp = commonWords.get(j);
-                    if (commonTemp.equals(plainTemp)){
+                for (int j = 0; j < dictionary.size(); j++){
+                    dictTemp = dictionary.get(j);
+                    if (plainTemp.equals(dictTemp)){
                         matchCount += 1;
-                        /*System.out.println("Found match! key of " + k + ", " +
-                                "and cipher " + cipherTemp + ", and match " + commonTemp +
-                                " (plaintext " + plainTemp + ")");
-                         */
                     }
                 }
             }
             matchRate = matchCount / encryptedText.size();
-            if (matchRate > 0.5) {
+            if (matchRate >= threshold) {
                 for (int i = 0; i < encryptedText.size(); i++){
                     plainTemp = Decrypt(encryptedText.get(i), k);
                     matchString += plainTemp + " ";
