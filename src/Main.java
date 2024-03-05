@@ -1,27 +1,123 @@
-import java.io.File;
+// import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        // https://www.ef.com/wwen/english-resources/english-vocabulary/top-1000-words/
-        ArrayList<String> commonWords = new ArrayList<>(); //
-        ArrayList<String> encryptedText = new ArrayList<>();
-        ArrayList<String> plainText = new ArrayList<>();
+
+        /*for (int i = 0; i < args.length; i++){
+            System.out.println("args from command line: " + args[i]);
+        }*/
+
+        boolean cmdArgsFlag = false;
+        String cmdArgs = "";
+        String fileToEncrypt = "";
+        String fileToDecrypt = "";
+        String fileToCrack = "";
+        int key = -1;
+        String outputFile = "";
+        double threshold = -1;
+        if (args.length == 4){
+            if (args[0].equals("-e")){
+                cmdArgs = args[0];
+                fileToEncrypt = args[1];
+                key = Integer.parseInt(args[2]);
+                outputFile = args[3];
+                cmdArgsFlag = true;
+            } else if (args[0].equals("-d")) {
+                cmdArgs = args[0];
+                fileToDecrypt = args[1];
+                key = Integer.parseInt(args[2]);
+                outputFile = args[3];
+                cmdArgsFlag = true;
+            } else if (args[0].equals("-c")) {
+                cmdArgs = args[0];
+                fileToCrack = args[1];
+                if (args[2].equals("-t")){
+                    threshold = Double.parseDouble(args[3]);
+                    cmdArgsFlag = true;
+                } else {
+                    System.out.println("Input Error: Command Line Arguments. " +
+                            "Please try again.");
+                }
+            } else {
+                System.out.println("Input Error: Command Line Arguments. " +
+                        "Please try again.");
+            }
+        } else {
+            System.out.println("Input Error: Command Line Arguments. " +
+                    "Please try again.");
+        }
+
+
+        ArrayList<String> commonWords; //
+        ArrayList<String> encryptedText;
+        ArrayList<String> plainText;
+        String dictPath = "/Users/danielshafer/Desktop/dictionary.txt";
 
         boolean endFlag = false;
         while (!endFlag) {
+            if (cmdArgsFlag){
+                if (cmdArgs.equals("-e")){
+                    String tempWord;
+                    if (0 <= key && key <= 25) {
+                        FileHandler newHandler = new FileHandler();
+                        plainText = newHandler.loadFile(fileToEncrypt);
+                        CipherMethods newCipher = new CipherMethods(key);
+
+                        StringBuilder cipherText = new StringBuilder();
+                        for (int i = 0; i < plainText.size(); i++) {
+                            tempWord = plainText.get(i);
+                            cipherText.append(newCipher.Encrypt(tempWord, key)).append(" ");
+                        }
+                        newHandler.writeFile(outputFile, cipherText.toString());
+                        System.out.println(cipherText);
+                    } else {
+                        System.out.println("error, key out of bounds \n");
+                    }
+                } else if (cmdArgs.equals("-d")) {
+                    String tempWord;
+                    if (0 <= key && key <= 25) {
+                        FileHandler newHandler = new FileHandler();
+                        encryptedText = newHandler.loadFile(fileToDecrypt);
+                        CipherMethods newCipher = new CipherMethods(key);
+                        
+                        StringBuilder decryptedText = new StringBuilder();
+                        for (int i = 0; i < encryptedText.size(); i++) {
+                            tempWord = encryptedText.get(i);
+                            decryptedText.append(newCipher.Decrypt(tempWord, key)).append(" ");
+                        }
+                        newHandler.writeFile(outputFile, decryptedText.toString());
+                        System.out.println(decryptedText);
+                    } else {
+                        System.out.println("error, key out of bounds \n");
+                    }
+                } else {
+                    FileHandler newHandler = new FileHandler();
+                    encryptedText = newHandler.loadFile(fileToCrack);
+                    newHandler = new FileHandler();
+                    commonWords = newHandler.loadFile(dictPath);
+                    CipherMethods newCipher = new CipherMethods();
+                    if (0 <= threshold && threshold <= 1) {
+                        newCipher.compareToDict(threshold, commonWords, encryptedText);
+                    }
+                    else {
+                        System.out.println("error, threshold out of bounds \n");
+                    }
+                }
+                cmdArgsFlag = false;
+            }
             System.out.println("Welcome to Team Kida's Shift Cipher! \n");
             Scanner inputObject = new Scanner(System.in);
-            System.out.println("1. Encrypt a String \n2. Decrypt a String \n3. " +
-                    "Break Cipher \n4. End");
+            System.out.println("1. Encrypt \n2. Decrypt \n3. " +
+                    "Crack \n4. Quit\n");
             int menuInput = inputObject.nextInt();
 
             if (menuInput == 1) {
-                String tempWord = " ";
+                String tempWord;
                 System.out.println("Enter encryption key (positive integer 0 to 25):");
-                int key = inputObject.nextInt();
+                key = inputObject.nextInt();
                 if (0 <= key && key <= 25) {
                     inputObject = new Scanner(System.in);
                     System.out.println("Enter absolute path of text file to be encrypted: ");
@@ -34,21 +130,21 @@ public class Main {
                     System.out.println("Enter absolute path of the file to write encrypted text: ");
                     filePath = inputObject.nextLine();
 
-                    String cipherText = "";
+                    StringBuilder cipherText = new StringBuilder();
                     for (int i = 0; i < plainText.size(); i++) {
                         tempWord = plainText.get(i);
-                        cipherText += newCipher.Encrypt(tempWord, key) + " ";
+                        cipherText.append(newCipher.Encrypt(tempWord, key)).append(" ");
                     }
-                    newHandler.writeFile(filePath, cipherText);
+                    newHandler.writeFile(filePath, cipherText.toString());
                     System.out.println(cipherText);
 
                 } else {
                     System.out.println("error, key out of bounds \n");
                 }
             } else if (menuInput == 2) {
-                String tempWord = " ";
+                String tempWord;
                 System.out.println("Enter encryption key (positive integer 0 to 25):");
-                int key = inputObject.nextInt();
+                key = inputObject.nextInt();
                 if (0 <= key && key <= 25) {
                     inputObject = new Scanner(System.in);
                     System.out.println("Enter absolute path of the file to be decrypted: ");
@@ -56,11 +152,16 @@ public class Main {
                     FileHandler newHandler = new FileHandler();
                     encryptedText = newHandler.loadFile(filePath);
                     CipherMethods newCipher = new CipherMethods(key);
-                    String decryptedText = "";
+
+                    inputObject = new Scanner(System.in);
+                    System.out.println("Enter absolute path of the file to write decrypted text: ");
+                    filePath = inputObject.nextLine();
+                    StringBuilder decryptedText = new StringBuilder();
                     for (int i = 0; i < encryptedText.size(); i++) {
                         tempWord = encryptedText.get(i);
-                        decryptedText += newCipher.Decrypt(tempWord, key) + " ";
+                        decryptedText.append(newCipher.Decrypt(tempWord, key)).append(" ");
                     }
+                    newHandler.writeFile(filePath, decryptedText.toString());
                     System.out.println(decryptedText);
                 } else {
                     System.out.println("error, key out of bounds \n");
@@ -72,12 +173,11 @@ public class Main {
                 FileHandler newHandler = new FileHandler();
                 encryptedText = newHandler.loadFile(filePath);
                 newHandler = new FileHandler();
-                String dictPath = "/Users/danielshafer/Desktop/dictionary.txt";
                 commonWords = newHandler.loadFile(dictPath);
                 CipherMethods newCipher = new CipherMethods();
                 inputObject = new Scanner(System.in);
                 System.out.println("Enter threshold for decryption matches (for 70% enter 0.70)");
-                double threshold = inputObject.nextDouble();
+                threshold = inputObject.nextDouble();
                 if (0 <= threshold && threshold <= 1) {
                     newCipher.compareToDict(threshold, commonWords, encryptedText);
                 }

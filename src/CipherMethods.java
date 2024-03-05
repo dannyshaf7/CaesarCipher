@@ -1,12 +1,10 @@
 import java.lang.Math;
-import java.lang.reflect.Array;
+// import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.lang.Character;
 
 public class CipherMethods {
 
-    // Class Variable Declarations:
-    private String plainText;
     //private String cipherText = "";
     private int cipherKey;
     // array of chars - english alphabet - used for caesar cipher position comparisons
@@ -37,19 +35,19 @@ public class CipherMethods {
         method returns ciphertext as String
     */
     public String Encrypt(String text, int key){
-        plainText = text;
+        // Class Variable Declarations:
         cipherKey = key;
         int charPos;
         char plainChar;
         char cipherChar;
-        String cipherText = "";
-        for (int i=0; i < plainText.length(); i++) {
-            plainChar = plainText.charAt(i);
+        StringBuilder cipherText = new StringBuilder();
+        for (int i = 0; i < text.length(); i++) {
+            plainChar = text.charAt(i);
             if (Character.isSpaceChar(plainChar)) {
-                cipherText += " ";
+                cipherText.append(" ");
             }
             else if (!Character.isDigit(plainChar) && !Character.isLetter(plainChar)) {
-                cipherText += plainChar;
+                cipherText.append(plainChar);
             }
             else {
                 for (int j = 0; j < alphaPos.length; j++) {
@@ -73,12 +71,12 @@ public class CipherMethods {
                             charPos = (charPos + key) % 26;
                         }
                         cipherChar = alphaPos[charPos];
-                        cipherText += Character.toString(cipherChar);
+                        cipherText.append(cipherChar);
                     }
                 }
             }
         }
-        return cipherText;
+        return cipherText.toString();
     }
 
     /* Decrypt method: takes String ciphertext and int key as parameters
@@ -94,7 +92,7 @@ public class CipherMethods {
         String cipherTemp;
         String dictTemp;
         String plainTemp;
-        String matchString = "";
+        StringBuilder matchString = new StringBuilder();
         double matchCount;
         double matchRate;
         for (int k = 0; k < 26; k++){
@@ -113,7 +111,7 @@ public class CipherMethods {
             if (matchRate >= threshold) {
                 for (int i = 0; i < encryptedText.size(); i++){
                     plainTemp = Decrypt(encryptedText.get(i), k);
-                    matchString += plainTemp + " ";
+                    matchString.append(plainTemp).append(" ");
                 }
                 matchRate = matchRate * 100;
                 System.out.println("Match Rate: %" + matchRate + " for key " + k + "\n");

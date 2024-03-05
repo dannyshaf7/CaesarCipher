@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f3e4967-6baf-440c-b015-19a379d3c2e8" name="Changes" comment="Added Kiara's code for FileHandler, did not run when copying over, worked out bugs and now running load to encrypt and load to decrypt">
+    <list default="true" id="6f3e4967-6baf-440c-b015-19a379d3c2e8" name="Changes" comment="Fixed bugs with loadFile, added new line delimiter, fixed bugs with compareToDict">
+      <change afterPath="$PROJECT_DIR$/src/CipherMethods.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FileHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CipherMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CipherMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileHandler.java" afterDir="false" />
@@ -49,15 +52,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/danielshafer/Documents/College/Spring 2024/Applied Cryptography/Group Project/CaesarCipher",
-    "settings.editor.selected.configurable": "vcs.Git"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/danielshafer/Documents/College/Spring 2024/Applied Cryptography/Group Project/CaesarCipher&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -151,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709442094199</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fixed bugs with loadFile, added new line delimiter, fixed bugs with compareToDict">
+      <created>1709527341421</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1709527341421</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,6 +214,7 @@
     <MESSAGE value="Added documentation to CipherMethods.java class for readability" />
     <MESSAGE value="Created arraylists for common words and an encrypted message for testing, interim while i wait on Kiara to add code for file handling; finished compareToDict() method, which will check encrypted text against list of 1000 most common words and if more than 50% match will give the decryption based on that key" />
     <MESSAGE value="Added Kiara's code for FileHandler, did not run when copying over, worked out bugs and now running load to encrypt and load to decrypt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Kiara's code for FileHandler, did not run when copying over, worked out bugs and now running load to encrypt and load to decrypt" />
+    <MESSAGE value="Fixed bugs with loadFile, added new line delimiter, fixed bugs with compareToDict" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs with loadFile, added new line delimiter, fixed bugs with compareToDict" />
   </component>
 </project>
