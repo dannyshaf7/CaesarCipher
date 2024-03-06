@@ -14,13 +14,17 @@ import java.nio.file.Paths;
 
 public class FileHandler {
 
+    // gets current working directory to use for relative path
+    String localDir = System.getProperty("user.dir");
+
     //Constructor
     public FileHandler(){}
 
 
     //Method Declarations
-    public ArrayList<String> loadFile (String filePath) throws IOException {
-        Path path = Paths.get(filePath);
+    public ArrayList<String> loadFile (String fileName) throws IOException {
+        // Path path = Paths.get(filePath);
+        Path path = Paths.get(localDir + "/"+ fileName);
         Scanner fileInput = new Scanner(path);
         fileInput.useDelimiter(" |\\n"); // delimited by space or new line
 

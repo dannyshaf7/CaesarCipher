@@ -47,7 +47,7 @@ public class CipherMethods {
             if (Character.isSpaceChar(plainChar)) {
                 cipherText.append(" ");
             }
-            else if (!Character.isDigit(plainChar) && !Character.isLetter(plainChar)) {
+            else if (!Character.isLetter(plainChar)) {
                 cipherText.append(plainChar);
             }
             else {
