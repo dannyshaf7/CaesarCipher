@@ -46,9 +46,9 @@ public class CipherMethods {
         for (int i=0; i < plainText.length(); i++) {
             plainChar = plainText.charAt(i);
             if (Character.isSpaceChar(plainChar)) {
-                cipherText += " ";
+                cipherText += "";
             }
-            else if (!Character.isDigit(plainChar) && !Character.isLetter(plainChar)) {
+            else if (!Character.isLetter(plainChar)) {
                 cipherText += plainChar;
             }
             else {

@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -90,27 +91,34 @@ public class Main {
                     encryptedText = newHandler.loadFile(filePath);
                     newHandler = new FileHandler();
                     //String dictPath = "/Users/danielshafer/Desktop/dictionary.txt";
-                    String dictPath = "C:\\Users\\Kiara\\IdeaProjects\\caeser-cipher\\src\\Dictionary";
+                    //String dictPath = "C:\\Users\\Kiara\\IdeaProjects\\caeser-cipher\\src\\Dictionary";
                     //Want to ask the user where their dictionary file is:
-                    //System.out.println("Enter absolute path of the file to be decrypted: (If you're using Windows, use double \\)");
-                    //String filePath = inputObject.nextLine();
-                    // if (newHandler.loadFile(filePath) != null) {
-                    commonWords = newHandler.loadFile(dictPath);
-                    CipherMethods newCipher = new CipherMethods();
-                    inputObject = new Scanner(System.in);
-                    System.out.println("Enter threshold for decryption matches (for 70% enter 0.70)");
-                    double threshold = inputObject.nextDouble();
-                    if (0 <= threshold && threshold <= 1) {
-                        newCipher.compareToDict(threshold, commonWords, encryptedText);
+                    System.out.println("Enter absolute path of the file to be decrypted: (If you're using Windows, use double \\)");
+                    String dictPath = inputObject.nextLine();
+                    if (newHandler.loadFile(filePath) != null) {
+                        commonWords = newHandler.loadFile(dictPath);
+                        CipherMethods newCipher = new CipherMethods();
+                        inputObject = new Scanner(System.in);
+                        System.out.println("Enter threshold for decryption matches (for 70% enter 0.70)");
+                        try {
+                            double threshold = inputObject.nextDouble();
+                            if (0 <= threshold && threshold <= 1) {
+                                newCipher.compareToDict(threshold, commonWords, encryptedText);
+                            } else {
+                                System.out.println("error, threshold out of bounds \n");
+                            }
+                        } catch (InputMismatchException e) {
+                            //e.printStackTrace();
+                            System.out.println("\n\n There was an error in getting the threshold for the decryption");
+                        }
+
                     } else {
-                        System.out.println("error, threshold out of bounds \n");
-                    }
+                    System.out.println("There was an error in retrieving rhe dictionary file with the absolute path given"); }
                 }
-                // }
-                //else{ System.out.println("There was an error in retrieving rhe dictionary file with the absolute path given);}
                 else{
                     System.out.println("There was an error in loading your file using the absolute path");
                 }
+
             } else if (menuInput == 4) {
                 endFlag = true;
             } else {
