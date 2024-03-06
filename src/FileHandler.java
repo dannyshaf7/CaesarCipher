@@ -17,11 +17,11 @@ public class FileHandler {
 
     //Method Declarations
     public ArrayList<String> loadFile (String fileName) throws IOException {
-        // Path path = Paths.get(filePath);
-        Path path = Paths.get(localDir + "/"+ fileName);
+        Path path = Paths.get(localDir + "/"+ fileName); // Loads the file using the string path
         Scanner fileInput = new Scanner(path);
         fileInput.useDelimiter(" |\\n"); // delimited by space or new line
 
+        // Loads the file into the array list using the space or new line delimiter
         ArrayList<String> plainText = new ArrayList<>();
         while (fileInput.hasNext()){
             String word = fileInput.next();
@@ -30,25 +30,11 @@ public class FileHandler {
         return plainText;
     }
     public void writeFile(String filePath, String toWrite) throws IOException {
-        try {
-            FileWriter newWrite = new FileWriter(filePath);
-            for (int i = 0; i < toWrite.length(); i++) {
-                newWrite.write(toWrite.charAt(i));
-            }
-            System.out.println("Successfully written");
-            newWrite.close();
+        FileWriter newWrite = new FileWriter(filePath); //Writes to the file name given char by char
+        for (int i = 0; i < toWrite.length(); i++) {
+            newWrite.write(toWrite.charAt(i));
         }
-        catch (Exception e) {
-            e.getStackTrace();
-        }
-        /* if (file.createNewFile()){
-            FileWriter writer = new FileWriter(filename);
-            for (int i=0; i<string.length(); i++){
-                writer.write(string.charAt(i));
-            }
-        }
-        else{
-            System.out.println("The file  already exists");
-        }*/
+        System.out.println("Successfully written");
+        newWrite.close();
     }
 }

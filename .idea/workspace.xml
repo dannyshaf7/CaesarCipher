@@ -5,6 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f3e4967-6baf-440c-b015-19a379d3c2e8" name="Changes" comment="Added command line functionality">
+      <change afterPath="$PROJECT_DIR$/DecryptedText" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EncryptedText" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/decryptiontext" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Decrypted" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Decrypted_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Decrypted_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CipherMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CipherMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709753300570</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added command line functionality">
+      <created>1709753813391</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1709753813391</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

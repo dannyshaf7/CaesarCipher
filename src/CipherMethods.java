@@ -79,6 +79,7 @@ public class CipherMethods {
         }
         return cipherText.toString();
     }
+
     /* Decrypt method: takes String ciphertext and int key as parameters
         makes the key negative and calls the encrypt function, passing the ciphertext and
         key (now a negative int) as parameters
@@ -88,6 +89,7 @@ public class CipherMethods {
         cipherKey = -1 * key;
         return Encrypt(text, cipherKey);
     }
+
     public void compareToDict(double threshold, ArrayList<String> dictionary, ArrayList<String> encryptedText){
         String cipherTemp;
         String dictTemp;
@@ -95,6 +97,7 @@ public class CipherMethods {
         StringBuilder matchString = new StringBuilder();
         double matchCount;
         double matchRate;
+        boolean success = false;
         for (int k = 0; k < 26; k++){
             matchCount = 0;
             for (int i = 0; i < encryptedText.size(); i++){
@@ -113,10 +116,15 @@ public class CipherMethods {
                     plainTemp = Decrypt(encryptedText.get(i), k);
                     matchString.append(plainTemp).append(" ");
                 }
+                success = true;
                 matchRate = matchRate * 100;
                 System.out.println("Match Rate: %" + matchRate + " for key " + k + "\n");
                 System.out.println("Decrypted Text: " + matchString + "\n ");
             }
+        }
+        if (success == false){
+            System.out.println("Cracking unsuccessful for threshold: " + threshold + ".\n" +
+                    "Please try a lower threshold.\n");
         }
     }
 }
