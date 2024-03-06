@@ -79,7 +79,6 @@ public class CipherMethods {
         }
         return cipherText.toString();
     }
-
     /* Decrypt method: takes String ciphertext and int key as parameters
         makes the key negative and calls the encrypt function, passing the ciphertext and
         key (now a negative int) as parameters
